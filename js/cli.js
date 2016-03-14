@@ -1,4 +1,8 @@
-var journal = require('./journal.js')
+var journal = require('./journal.js').journal;
+var prompt = require('prompt');
+prompt.start();
 
-
-console.log('Enter a journal title and body');
+prompt.get(['title', 'body'], function(err, result){
+  console.log(' title: ' + result.title);
+  console.log(' body: ' + result.body);
+});
