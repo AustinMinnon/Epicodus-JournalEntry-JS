@@ -1,4 +1,4 @@
-// var Journal = require('./../js/journal.js').Journal;
+var rnal = require('./../js/journal.js');
 var moment = require('moment');
 
 $(document).ready(function(){
@@ -8,9 +8,13 @@ $(document).ready(function(){
     event.preventDefault();
     var body = $('#body').val();
     var time = moment().format('MMMM Do YYYY, h:mm a');
-
-    // var journalPost = new Journal(title, body);
-      $('#journalPost').append("<li>" + title + "<p>" + time + "</p> </li> <p>" + body + "</p>");
-
+    var output = new rnal.Journal(title,body);
+    console.log(output);
+      $('#journalPost').append("<li>" + title + "<p>" + time + "</p> </li> <p>" + body + "</p> <p>" + output.wordCount() + "</p>");
   });
 });
+
+
+
+
+//

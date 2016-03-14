@@ -1,5 +1,11 @@
-exports.Journal = function(title, body, time){
+module.exports.Journal = Journal;
+
+function Journal(title, body){
   this.title = title;
   this.body = body;
-  this.time = time;
+};
+
+Journal.prototype.wordCount = function() {
+  var bodyArray = this.body.split(" ");
+  return bodyArray.length;
 };

@@ -1,4 +1,17 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+module.exports.Journal = Journal;
+
+function Journal(title, body){
+  this.title = title;
+  this.body = body;
+};
+
+Journal.prototype.wordCount = function() {
+  var bodyArray = this.body.split(" ");
+  return bodyArray.length;
+};
+
+},{}],2:[function(require,module,exports){
 //! moment.js
 //! version : 2.12.0
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
@@ -3687,8 +3700,8 @@
     return _moment;
 
 }));
-},{}],2:[function(require,module,exports){
-// var Journal = require('./../js/journal.js').Journal;
+},{}],3:[function(require,module,exports){
+var rnal = require('./../js/journal.js');
 var moment = require('moment');
 
 $(document).ready(function(){
@@ -3698,11 +3711,16 @@ $(document).ready(function(){
     event.preventDefault();
     var body = $('#body').val();
     var time = moment().format('MMMM Do YYYY, h:mm a');
-
-    // var journalPost = new Journal(title, body);
-      $('#journalPost').append("<li>" + title + "<p>" + time + "</p> </li> <p>" + body + "</p>");
-
+    var output = new rnal.Journal(title,body);
+    console.log(output);
+      $('#journalPost').append("<li>" + title + "<p>" + time + "</p> </li> <p>" + body + "</p> <p>" + output.wordCount() + "</p>");
+debugger;
   });
 });
 
-},{"moment":1}]},{},[2]);
+
+
+
+//
+
+},{"./../js/journal.js":1,"moment":2}]},{},[3]);
